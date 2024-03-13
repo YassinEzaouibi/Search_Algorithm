@@ -1,12 +1,14 @@
-class BinarySearchExample {
+import java.util.Objects;
 
-    int binarySearch(int[] arr, int target) {
+class BinarySearchNumbersExample {
+
+    int binarySearch(Integer[] arr, Integer target) {
         int low = 0, arrayLength = arr.length - 1;
         while (low <= arrayLength) {
             int mid = low + (arrayLength - low) / 2;
 
             // Check if x is present at mid
-            if (arr[mid] == target)
+            if (Objects.equals(arr[mid], target))
                 return mid;
 
             // If x greater, ignore left half
@@ -28,8 +30,8 @@ class BinarySearchExample {
 
         // binary search example
         System.out.println("Binary search example" );
-        BinarySearchExample ob = new BinarySearchExample();
-        int[] arr = new int[10000];
+        BinarySearchNumbersExample ob = new BinarySearchNumbersExample();
+        Integer[] arr = new Integer[1_000_000];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = i + 1;
         }
@@ -37,11 +39,15 @@ class BinarySearchExample {
         int n = arr.length;
 */
 
-        int x = 5000;
+        Integer x = 709_108;
 
         long startTimeBinary = System.nanoTime();
         int result = ob.binarySearch(arr, x);
         long endTimeBinary = System.nanoTime();
+
+        /*long startTimeBinaryWithArrays = System.nanoTime();
+        int binarySearch = Arrays.binarySearch(arr, x);
+        long endTimeBinaryWithArrays = System.nanoTime();*/
 
         if (result == -1)
             System.out.println(
@@ -54,15 +60,15 @@ class BinarySearchExample {
 
         // linear search example
         System.out.println("Linear search example" );
-        int[] arr2 = new int[10000];
+        Integer[] arr2 = new Integer[1_000_000];
         for (int i = 0; i < arr2.length; i++) {
             arr2[i] = i + 1;
         }
-        int x2 = 5000;
+        Integer x2 = 709_108;
 
         long startTimeLinear = System.nanoTime();
         for (int i = 0; i < arr2.length; i++) {
-            if (arr2[i] == x2) {
+            if (Objects.equals(arr2[i], x2)) {
                 System.out.println("Element is present at "
                         + "index " + i);
                 break;
